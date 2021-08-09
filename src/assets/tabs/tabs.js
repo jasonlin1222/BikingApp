@@ -15,22 +15,7 @@ function MyTabs() {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           if (route.name === "Ride") {
-            iconName = focused ? "add-circle" : "ios-add-circle-outline";
-            return (
-              <View
-                style={{
-                  position: "absolute",
-                  bottom: 0, // space from bottombar
-                  height: 68,
-                  width: 68,
-                  borderRadius: 68,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Ionicons name={iconName} color={color} size={66} />
-              </View>
-            );
+            iconName = "ios-bicycle";
           } else if (route.name === "Home") {
             iconName = focused ? "ios-home" : "ios-home-outline";
           } else if (route.name === "Profile") {
