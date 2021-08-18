@@ -2,7 +2,6 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import homescreenstyle from "../style/homescreenstyle";
-import styles from "../style/style";
 
 const DATA = [
   {

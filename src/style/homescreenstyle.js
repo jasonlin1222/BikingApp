@@ -7,7 +7,7 @@ const homescreenstyle = StyleSheet.create({
     marginTop: StatusBar.currentHeight || 0,
   },
   item: {
-    backgroundColor: "#f9c2ff",
+    backgroundColor: "#11cbf0",
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
