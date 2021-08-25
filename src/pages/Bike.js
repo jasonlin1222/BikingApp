@@ -1,8 +1,9 @@
 import { Picker } from "@react-native-picker/picker";
 import React, { useEffect, useState } from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, Animated } from "react-native";
 import MapView from "react-native-maps";
 import { Marker } from "react-native-maps";
+
 const Route = [
   "基隆河沿岸自行車道(右)",
   "基隆河沿岸自行車道(左)",
@@ -64,68 +65,45 @@ const markers = [
 
 const defaultRegion = { latitude: 25.105497, longitude: 121.597366 };
 
-export const getCurrentLocation = () => {
-  return new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => resolve(position),
-      (e) => reject(e)
-    );
-  });
-};
-
-class Map extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      region: defaultRegion,
-    };
-  }
-  componentDidMount() {
-    return getCurrentLocation().then((position) => {
-      if (position) {
-        this.setState({
-          region: {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-            latitudeDelta: 0.003,
-            longitudeDelta: 0.003,
-          },
-        });
-      }
-    });
-  }
-
-  render() {
-    return (
-      <MapView
-        style={{
-          left: 0,
-          right: 0,
-          top: 0,
-          bottom: 0,
-          position: "absolute",
-        }}
-        showsUserLocation={true}
-      >
-        {markers.map((marker, index) => (
-          <Marker
-            key={index}
-            coordinate={marker.latlng}
-            title={marker.title}
-            description={marker.description}
-          />
-        ))}
-      </MapView>
-    );
-  }
-}
-
 export default function Bike() {
   const [pickedRoute, setPickedRoute] = useState();
+
+  let index = 0;
+  let animation = new Animated.Value(0);
+
+
   return (
     <View>
       <View style={{ position: "relative", height: 500 }}>
-        <Map />
+        <MapView
+          ref={(map) => (this.map = map)}
+          followsUserLocation={true}
+          showsUserLocation={true}
+          showsMyLocationButton={true}
+          showsCompass={true}
+          toolbarEnabled={true}
+          zoomEnabled={true}
+          rotateEnabled={true}
+
+          style={{ flex: 1 }}
+          region={{
+            latitude: 51.4718,
+            longitude: -0.0749,
+            latitudeDelta: 0.01,
+            longitudeDelta: 0.01
+          }}
+        >
+          {markers.map((marker, index) => (
+            <Marker
+              key={index}
+              coordinate={marker.latlng}
+              title={marker.title}
+              description={marker.description}
+            >
+              <Animated.View></Animated.View>
+            </Marker>
+          ))}
+        </MapView>
       </View>
       <Picker
         selectedValue={pickedRoute}
@@ -137,6 +115,8 @@ export default function Bike() {
           return <Picker.Item key={index} label={value} value={index} />;
         })}
       </Picker>
+      <Button title="Select"
+        onPress={this.map.animateToRegion(this.randomRegion())} />
     </View>
   );
 }

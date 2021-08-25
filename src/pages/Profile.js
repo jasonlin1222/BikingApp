@@ -18,7 +18,7 @@ export default class Profile extends Component {
           <View style={profilestyle.bodyContent}>
             <Text style={profilestyle.name}>John Doe</Text>
             <Text style={profilestyle.info}>
-              UX Designer / Mobile developer
+              Ranking: 110
             </Text>
             <Text style={profilestyle.description}>
               Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum
