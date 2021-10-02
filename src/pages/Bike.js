@@ -1,6 +1,7 @@
 import { Picker } from "@react-native-picker/picker";
 import React, { useEffect, useState } from "react";
 import { View, Text, Button, Animated } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import MapView from "react-native-maps";
 import { Marker } from "react-native-maps";
 
@@ -24,7 +25,7 @@ const markers = [
   {
     latlng: { latitude: 25.050153876407784, longitude: 121.57834989645482 },
     title: "基隆河沿岸自行車道(左)",
-    description: "中山捷運站",
+    description: "中山捷運站, 13km, 難度：難",
   },
   {
     latlng: { latitude: 25.167912309123707, longitude: 121.44623346178521 },
@@ -68,30 +69,20 @@ const defaultRegion = { latitude: 25.105497, longitude: 121.597366 };
 export default function Bike() {
   const [pickedRoute, setPickedRoute] = useState();
 
-  let index = 0;
-  let animation = new Animated.Value(0);
-
+  const start = () => {};
 
   return (
-    <View>
+    <View style>
       <View style={{ position: "relative", height: 500 }}>
         <MapView
-          ref={(map) => (this.map = map)}
-          followsUserLocation={true}
-          showsUserLocation={true}
-          showsMyLocationButton={true}
-          showsCompass={true}
-          toolbarEnabled={true}
-          zoomEnabled={true}
-          rotateEnabled={true}
-
-          style={{ flex: 1 }}
-          region={{
-            latitude: 51.4718,
-            longitude: -0.0749,
-            latitudeDelta: 0.01,
-            longitudeDelta: 0.01
+          style={{
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            position: "absolute",
           }}
+          showsUserLocation={true}
         >
           {markers.map((marker, index) => (
             <Marker
@@ -99,9 +90,7 @@ export default function Bike() {
               coordinate={marker.latlng}
               title={marker.title}
               description={marker.description}
-            >
-              <Animated.View></Animated.View>
-            </Marker>
+            ></Marker>
           ))}
         </MapView>
       </View>
@@ -110,13 +99,18 @@ export default function Bike() {
         onValueChange={(itemValue, itemIndex) => {
           setPickedRoute(itemIndex);
         }}
+        style={{ width: 400, height: 100, align: "right" }}
       >
         {Route.map((value, index) => {
           return <Picker.Item key={index} label={value} value={index} />;
         })}
       </Picker>
-      <Button title="Select"
-        onPress={this.map.animateToRegion(this.randomRegion())} />
+      <TouchableOpacity
+        style={{ position: "relative" }}
+        onPress={start(pickedRoute)}
+      >
+        <Text> Start</Text>
+      </TouchableOpacity>
     </View>
   );
 }
