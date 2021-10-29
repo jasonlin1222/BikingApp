@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { SectionList, StyleSheet, Text, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import FriendProfile from "./FriendProfile";
 
 const styles = StyleSheet.create({
   container: {
@@ -22,7 +24,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const SectionListBasics = () => {
+const SectionListBasics = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <SectionList
@@ -41,7 +43,17 @@ const SectionListBasics = () => {
             ],
           },
         ]}
-        renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate(FriendProfile, {
+                paramKey: item,
+              });
+            }}
+          >
+            <Text style={styles.item}>{item}</Text>
+          </TouchableOpacity>
+        )}
         renderSectionHeader={({ section }) => (
           <Text style={styles.sectionHeader}>{section.title}</Text>
         )}

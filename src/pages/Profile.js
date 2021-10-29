@@ -10,7 +10,7 @@ export default function Profile({ navigation }) {
       <Image
         style={profilestyle.avatar}
         source={{
-          uri: "https://bootdey.com/img/Content/avatar/avatar1.png",
+          uri: "https://cdn.pixabay.com/photo/2018/11/13/21/43/instagram-3814049_1280.png",
         }}
       />
       <View style={profilestyle.body}>
@@ -33,7 +33,7 @@ export default function Profile({ navigation }) {
             <TouchableOpacity
               style={profilestyle.buttonContainer}
               onPress={() => {
-                navigation.navigate("History ");
+                navigation.navigate("History");
               }}
             >
               <Text>History</Text>

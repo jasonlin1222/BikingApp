@@ -1,6 +1,7 @@
 import React from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
-
+import { FlatList, StyleSheet, Text, View, Image } from "react-native";
+import { Card, ListItem, Button, Icon } from "react-native-elements";
+import { TouchableOpacity } from "react-native-gesture-handler";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -11,22 +12,53 @@ const styles = StyleSheet.create({
     fontSize: 40,
     height: 120,
   },
+  user: {
+    margin: 20,
+    fontSize: 20,
+  },
+  date: {
+    fontSize: 20,
+  },
+  des: {
+    fontSize: 15,
+  },
 });
+
+const users = [
+  {
+    date: "2018-11-12",
+    des: "X route",
+  },
+  {
+    date: "2021-2-2",
+    des: "X route",
+  },
+  {
+    date: "2021-9-12",
+    des: "X route",
+  },
+];
 
 const FlatListBasics = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <FlatList
-        data={[
-          { key: "2021-12-15" },
-          { key: "2021-10-14" },
-          { key: "2021-9-8" },
-          { key: "2021-8-20" },
-          { key: "2021-7-15" },
-          { key: "2021-5-30" },
-        ]}
-        renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
-      />
+      <Card containerStyle={{ padding: 5 }}>
+        {users.map((u, i) => {
+          return (
+            <View key={i} style={styles.user}>
+              <TouchableOpacity
+                onclick={() => {
+                  console.log("hello");
+                }}
+              >
+                <Text style={styles.date}>{u.date}</Text>
+                <Card.Divider />
+                <Text style={styles.des}>{u.des}</Text>
+              </TouchableOpacity>
+            </View>
+          );
+        })}
+      </Card>
     </View>
   );
 };

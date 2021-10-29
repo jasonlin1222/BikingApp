@@ -7,7 +7,24 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Image,
 } from "react-native";
+
+const styles = StyleSheet.create({
+  image: {
+    padding: 20,
+    width: 300,
+    height: 300,
+    borderRadius: 80,
+  },
+  text: {
+    textAlign: "center",
+    fontWeight: "bold",
+    justifyContent: "center",
+    fontSize: 40,
+    width: 400,
+  },
+});
 
 export default function Welcome({ navigation }) {
   return (
@@ -18,17 +35,8 @@ export default function Welcome({ navigation }) {
         flex: 2,
       }}
     >
-      <Text
-        style={{
-          textAlign: "center",
-          fontWeight: "bold",
-          justifyContent: "center",
-          fontSize: 50,
-          width: 400,
-        }}
-      >
-        Welcome
-      </Text>
+      <Image style={styles.image} source={require("../assets/logo.png")} />
+      <Text style={styles.text}>Welcome To GoBike</Text>
       <TouchableOpacity
         color="#4b7ddb"
         style={{
@@ -36,12 +44,10 @@ export default function Welcome({ navigation }) {
           backgroundColor: "#69c3ff",
           padding: 10,
           margin: 20,
+          borderRadius: 10,
         }}
         onPress={() => {
-          navigation.reset({
-            index: 0,
-            routes: [{ name: "Home" }],
-          });
+          navigation.navigate("Login");
         }}
       >
         <Text style={{ fontSize: 20 }}>Login</Text>

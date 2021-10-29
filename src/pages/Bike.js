@@ -66,14 +66,12 @@ const markers = [
 
 const defaultRegion = { latitude: 25.105497, longitude: 121.597366 };
 
-export default function Bike() {
+export default function Bike({ navigation }) {
   const [pickedRoute, setPickedRoute] = useState();
 
-  const start = () => {};
-
   return (
-    <View style>
-      <View style={{ position: "relative", height: 500 }}>
+    <View style={{ margin: 5 }}>
+      <View style={{ position: "relative", height: 450 }}>
         <MapView
           style={{
             left: 0,
@@ -83,6 +81,7 @@ export default function Bike() {
             position: "absolute",
           }}
           showsUserLocation={true}
+          defaultRegion={defaultRegion}
         >
           {markers.map((marker, index) => (
             <Marker
@@ -94,23 +93,49 @@ export default function Bike() {
           ))}
         </MapView>
       </View>
-      <Picker
-        selectedValue={pickedRoute}
-        onValueChange={(itemValue, itemIndex) => {
-          setPickedRoute(itemIndex);
+      <View
+        style={{
+          position: "relative",
         }}
-        style={{ width: 400, height: 100, align: "right" }}
       >
-        {Route.map((value, index) => {
-          return <Picker.Item key={index} label={value} value={index} />;
-        })}
-      </Picker>
-      <TouchableOpacity
-        style={{ position: "relative" }}
-        onPress={start(pickedRoute)}
+        <Picker
+          selectedValue={pickedRoute}
+          onValueChange={(itemValue, itemIndex) => {
+            setPickedRoute(itemIndex);
+          }}
+          style={{ maxHeight: 160, position: "relative" }}
+          itemStyle={{ height: 180 }}
+        >
+          {Route.map((value, index) => {
+            return <Picker.Item key={index} label={value} value={index} />;
+          })}
+        </Picker>
+      </View>
+      <View
+        style={{
+          position: "relative",
+        }}
       >
-        <Text> Start</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          color="#4b7ddb"
+          style={{
+            position: "relative",
+            alignItems: "center",
+            backgroundColor: "#69c3ff",
+            padding: 10,
+            margin: 20,
+            borderRadius: 10,
+          }}
+          onPress={() => {
+            navigation.reset({
+              index: 0,
+              routes: [{ name: "Navi" }],
+            });
+          }}
+        >
+          <Text style={{ fontSize: 20 }}>Start</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
