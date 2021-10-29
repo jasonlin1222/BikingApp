@@ -1,11 +1,12 @@
 import React from "react";
-
 import MyTabs from "./src/assets/tabs/tabs";
 import Welcome from "./src/pages/Welcome";
 import Friends from "./src/pages/Friends";
 import History from "./src/pages/History";
 import FriendProfile from "./src/pages/FriendProfile";
 import Login from "./src/pages/Login";
+import { StyleSheet, Text, View } from "react-native";
+import styles from "./style/style";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Navi from "./src/pages/Navi";
