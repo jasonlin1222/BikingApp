@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "An app that tracks bike rides and allows you to socialize with others",
+    "githubUrl": "https://github.com/jasonlin1222/BikingApp"
   }
 }
