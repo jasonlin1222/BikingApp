@@ -18,8 +18,7 @@ export default function Profile({ navigation }) {
           <Text style={profilestyle.name}>John Doe</Text>
           <Text style={profilestyle.info}>Ranking: 110</Text>
           <Text style={profilestyle.description}>
-            Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum
-            electram expetendis, omittam deseruisse consequuntur ius an,
+            Lorem ipsum dolor sit amet
           </Text>
           <View style={profilestyle.button}>
             <TouchableOpacity

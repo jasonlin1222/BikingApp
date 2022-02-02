@@ -71,7 +71,7 @@ export default function Bike({ navigation }) {
 
   return (
     <View style={{ margin: 5 }}>
-      <View style={{ position: "relative", height: 450 }}>
+      <View style={{ position: "relative", height: 280 }}>
         <MapView
           style={{
             left: 0,

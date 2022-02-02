@@ -9,6 +9,10 @@ import ReactWeather from "react-open-weather-widget";
 
 const defaultRegion = { latitude: 25.105497, longitude: 121.597366 };
 
+// const getData = () =>{
+//   fetch(' ')
+// }
+
 export default function Navi({ navigation, coord }) {
   const [pickedRoute, setPickedRoute] = useState();
 

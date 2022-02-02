@@ -43,7 +43,7 @@ const profilestyle = StyleSheet.create({
   description: {
     fontSize: 16,
     color: "#696969",
-    marginTop: 10,
+    marginTop: 5,
     textAlign: "center",
   },
   button: {
