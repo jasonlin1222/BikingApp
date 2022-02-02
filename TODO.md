@@ -1,7 +1,6 @@
 # notes for dev app
 
 ## before start
-
 - add maps
   - react-native-maps (from npm)
   - react-native-maps-direction (from npm)
